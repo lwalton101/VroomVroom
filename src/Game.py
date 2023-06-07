@@ -10,6 +10,8 @@ class Game():
         self.frameRate = frameRate
         self.title = title
 
+        self.running = True
+
         pygame.init()
         self.screen = pygame.display.set_mode((screenWidth, screenHeight))
         pygame.display.set_caption(title)
@@ -19,4 +21,13 @@ class Game():
         pass
 
     def loop(self) -> None:
-        pass
+        self.clock.tick(self.frameRate)
+
+        for event in pygame.event.get():       
+            if event.type == pygame.QUIT:
+                self.running = False
+
+        self.screen.fill((255,255,255))
+
+
+        pygame.display.flip()

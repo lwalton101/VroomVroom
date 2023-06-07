@@ -29,3 +29,6 @@ class Game():
 
         self.screen.fill((255,255,255))
         pygame.display.flip()
+
+    def quit(self):
+        pygame.quit()

@@ -6,6 +6,7 @@ class Scene1(Scene):
 
     def __init__(self):
         super().__init__((255,0,0))
+
     def Start(self):
         super().Start()
         print("Starting Scene 1")

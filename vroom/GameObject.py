@@ -1,11 +1,12 @@
 from vroom.Component import Component
+import uuid
 
 class GameObject:
-    name: str = ""
-    components: list[Component] = []
 
     def __init__(self, name: str):
-        self.name = name
+        self.name: str = name
+        self.components: list[Component] = []
+        self.id = uuid.uuid4()
 
     def Render(self) -> None:
         """

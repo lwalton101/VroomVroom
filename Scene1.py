@@ -12,11 +12,11 @@ class Scene1(Scene):
         super().Start()
         print("Starting Scene 1")
 
-        go: GameObject = self.CreateGameObject("bedrock image")
+        go: GameObject = self.CreateGameObject("rotate")
         go.AddComponent(SpriteRenderer("bedrock.png"))
         go.AddComponent(Controller())
 
-        go: GameObject = self.CreateGameObject("bedrock image 2")
+        go: GameObject = self.CreateGameObject("")
         go.AddComponent(SpriteRenderer("grass.png"))
         go.pos = 100,100
 

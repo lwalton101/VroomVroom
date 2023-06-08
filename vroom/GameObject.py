@@ -8,6 +8,8 @@ class GameObject:
         self.components: list[Component] = []
         self.id = uuid.uuid4()
         self.pos: tuple[int,int] = 0,0
+        self.rotation: float = 0
+        self.scale: float = 1
 
     def Render(self, screen) -> None:
         """

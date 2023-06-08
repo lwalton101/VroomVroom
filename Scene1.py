@@ -10,7 +10,7 @@ class Scene1(Scene):
         super().Start()
         print("Starting Scene 1")
 
-        go: GameObject = self.CreateGameObject("test 1")
+        go: GameObject = self.CreateGameObject("bedrock image")
         go.AddComponent(SpriteRenderer("bedrock.png"))
 
     def Update(self):

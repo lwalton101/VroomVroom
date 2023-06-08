@@ -1,7 +1,6 @@
 import pygame
 from vroom.Camera import Camera
 from vroom.Component import Component
-from vroom.GameObject import GameObject
 
 class SpriteRenderer(Component):
     
@@ -12,7 +11,8 @@ class SpriteRenderer(Component):
     def Render(self, screen: pygame.Surface) -> None:
         super().Render(screen)
         rect: pygame.Rect = self.img.get_rect()
-        rect.center = rect.centerx + self.gameObject.pos[0] - rect.width // 2 ,rect.centery + self.gameObject.pos[1] - rect.height // 2
+        #combines the gameobject pos and dimensions of rect to set center of sprite to be at the correct coordinates
+        rect.center = self.gameObject.pos[0] - rect.width // 2 ,self.gameObject.pos[1] - rect.height // 2
         rect = Camera.AdjustRectForOffset(rect)
         
         screen.blit(self.img, rect)

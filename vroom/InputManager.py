@@ -46,6 +46,13 @@ class InputManager:
 
     @staticmethod
     def debug() -> None:
+        """
+        The debug function prints out the current state of the InputManager's
+        keysDown, keysPressed, and keysUp lists.
+        
+        :return: The following:
+        :doc-author: Trelent
+        """
         print(f"Keys Down: {InputManager.keysDown}")
         print(f"Keys Pressed: {InputManager.keysPressed}")
         print(f"Keys Up: {InputManager.keysUp}")

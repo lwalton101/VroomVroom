@@ -11,8 +11,7 @@ class SpriteRenderer(Component):
     def Render(self, screen: pygame.Surface) -> None:
         super().Render(screen)
         rect: pygame.Rect = self.img.get_rect()
-        #combines the gameobject pos and dimensions of rect to set center of sprite to be at the correct coordinates
-        rect.center = self.gameObject.pos[0] - rect.width // 2 ,self.gameObject.pos[1] - rect.height // 2
+        rect.center = self.gameObject.pos
         rect = Camera.AdjustRectForOffset(rect)
         
         screen.blit(self.img, rect)

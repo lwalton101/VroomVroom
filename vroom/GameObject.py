@@ -1,8 +1,8 @@
 from Component import Component
 
 class GameObject:
-    name = ""
-    components: list = []
+    name: str = ""
+    components: list[Component] = []
 
     def __init__(self, name):
         self.name = name

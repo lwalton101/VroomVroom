@@ -1,14 +1,15 @@
 from vroom.Component import Component
-import uuid
+import uuid, pygame
 
 class GameObject:
 
-    def __init__(self, name: str):
+    def __init__(self, name: str, xPos: float = 0, yPos: float = 0):
         self.name: str = name
         self.components: list[Component] = []
         self.id = uuid.uuid4()
+        self.pos: tuple[int,int] = 0,0
 
-    def Render(self) -> None:
+    def Render(self, screen) -> None:
         """
         The Render function is a function that renders all of the components attatched to the game object.
         It does this by iterating through each component and calling its Render() method.
@@ -18,7 +19,7 @@ class GameObject:
         :doc-author: Trelent
         """
         for component in self.components:
-            component.Render()
+            component.Render(screen)
 
     def Update(self):
         """
@@ -47,20 +48,21 @@ class GameObject:
             
         return None 
 
-    def AddComponent(self, componentType: type):
+    def AddComponent(self, component: Component) -> Component | None:
         """
-        The AddComponent function adds a component to the gameobject.
-            If the component already exists, it will not be added again.
+        The AddComponent function adds a component to the gameobject's list of components.
+            If the component already exists, it will not be added and instead print an error message.
         
-        :param self: Represent the instance of the class
-        :param componentType: type: Specify the type of component that is being added to the gameobject
-        :return: The component it just added to the gameobject
+        :param self: Refer to the current instance of the class
+        :param component: Component: Pass in a component object to the function
+        :return: A component or none
         :doc-author: Trelent
         """
-        if not self.HasComponent(componentType):
-            self.components.append(componentType())
+        if not self.HasComponent(type(component)):
+            component.gameObject = self
+            self.components.append(component)
         else:
-            print(f"Tried adding duplicate component {componentType} on gameobject {self.name}")
+            print(f"Tried adding duplicate component {type(component)} on gameobject {self.name}")
 
     def HasComponent(self, componentType: type):
         """
@@ -90,9 +92,14 @@ class GameObject:
         :return: A string
         :doc-author: Trelent
         """
-        if self.HasComponent(componentType):
-            self.components.append(componentType())
-        else:
+        removed = False
+        
+        for component in self.components:
+            if type(component) == componentType:
+                self.components.remove(component)
+                removed = True
+                
+        if not removed:
             print(f"Tried removing nonexistant component {componentType} on gameobject {self.name}")
 
     

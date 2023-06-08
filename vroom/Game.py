@@ -1,6 +1,7 @@
 import pygame
 from vroom.InputManager import InputManager
 from vroom.Scene import Scene
+from vroom.Camera import Camera
 
 class Game:
 
@@ -25,6 +26,9 @@ class Game:
         self.frameRate = frameRate
         self.title = title
         self.currentScene = mainScene
+
+        Camera.screenWidth = screenWidth
+        Camera.screenHeight = screenHeight
 
         self.running = True
 
@@ -54,10 +58,10 @@ class Game:
                 InputManager.handleKeydownEvent(event.key)
             if event.type == pygame.KEYUP:
                 InputManager.handleKeyupEvent(event.key)
-
-        self.currentScene.Render()
+        self.currentScene.Render(self.screen)
         self.currentScene.Update()
-        self.screen.fill((255,255,255))
+        
+        pygame.display.update()
         pygame.display.flip()
 
     def quit(self) -> None:

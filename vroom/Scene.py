@@ -1,11 +1,11 @@
+import pygame
 from vroom.GameObject import GameObject
 from uuid import UUID
 
 class Scene:
-
-    gameObjects: dict[UUID,GameObject] = {}
-    
-    def __init__(self):
+    def __init__(self, color: tuple[int,int,int]):
+        self.color: tuple[int,int,int] = color
+        self.gameObjects: dict[UUID,GameObject] = {}
         pass
 
     def Start(self):
@@ -18,15 +18,16 @@ class Scene:
     def Exit(self):
         pass
 
-    def Render(self):
+    def Render(self, screen: pygame.Surface):
+        screen.fill(self.color)
         for uuid in self.gameObjects:
-            self.gameObjects[uuid].Render()
+            self.gameObjects[uuid].Render(screen)
 
     def AddGameObject(self, gameobject: GameObject) -> None:
         self.gameObjects[gameobject.id] = (gameobject)
 
-    def CreateGameObject(self, name: str) -> GameObject:
-        go: GameObject = GameObject(name)
+    def CreateGameObject(self, name: str, xPos: int = 0, yPos: int = 0) -> GameObject:
+        go: GameObject = GameObject(name, xPos, yPos)
         self.AddGameObject(go)
         return go
     

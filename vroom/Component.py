@@ -1,8 +1,9 @@
-import vroom.GameObject
+import vroom.game_object
+
 
 class Component:
     def __init__(self):
-        self.gameObject: vroom.GameObject.GameObject
+        self.gameObject: vroom.game_object.GameObject
         pass
 
     def Start(self):
@@ -14,7 +15,7 @@ class Component:
             bits in a sprite. It takes one argument, screen, which is a pygame
             Surface object that represents the display window. The Render function
             should be overridden by each Component subclass to draw its own objects.
-        
+
         :param self: Represent the instance of the class
         :param screen: Draw the object
         :return: The screen

@@ -1,12 +1,12 @@
-from Controller import Controller
-from vroom.GameObject import GameObject
-from vroom.Scene import Scene
-from vroom.component.SpriteRenderer import SpriteRenderer
+from controller import Controller
+from vroom.game_object import GameObject
+from vroom.scene import Scene
+from vroom.component.sprite_renderer import SpriteRenderer
+
 
 class Scene1(Scene):
-
     def __init__(self):
-        super().__init__((255,0,0))
+        super().__init__((255, 0, 0))
 
     def Start(self):
         super().Start()
@@ -18,7 +18,7 @@ class Scene1(Scene):
 
         go: GameObject = self.CreateGameObject("")
         go.AddComponent(SpriteRenderer("grass.png"))
-        go.pos = 100,100
+        go.pos = 100, 100
 
     def Update(self):
         super().Update()
@@ -26,4 +26,3 @@ class Scene1(Scene):
     def Exit(self):
         super().Exit()
         print("Exiting Scene 1")
-        

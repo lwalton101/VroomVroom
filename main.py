@@ -1,7 +1,7 @@
-from vroom.Game import Game
-from Scene1 import Scene1
+from vroom.game import Game
+from scene_1 import Scene1
 import pygame
-from vroom.InputManager import InputManager
+from vroom.input_manager import InputManager
 
 SCREEN_WIDTH = 500
 SCREEN_HEIGHT = 500
@@ -17,4 +17,3 @@ while game.running:
         game.SetScene(Scene1())
 
 game.quit()
-

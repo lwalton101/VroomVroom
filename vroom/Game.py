@@ -26,7 +26,6 @@ class Game:
         self.title = title
         self.currentScene = mainScene
 
-        self.inputManger = InputManager()
         self.running = True
 
         pygame.init()
@@ -47,14 +46,14 @@ class Game:
         :doc-author: Trelent
         """
         self.clock.tick(self.frameRate)
-        self.inputManger.update()
+        InputManager.update()
         for event in pygame.event.get():       
             if event.type == pygame.QUIT:
                 self.running = False
             if event.type == pygame.KEYDOWN:
-                self.inputManger.handleKeydownEvent(event.key)
+                InputManager.handleKeydownEvent(event.key)
             if event.type == pygame.KEYUP:
-                self.inputManger.handleKeyupEvent(event.key)
+                InputManager.handleKeyupEvent(event.key)
 
         self.currentScene.Render()
         self.screen.fill((255,255,255))

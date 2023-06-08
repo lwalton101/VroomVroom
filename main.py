@@ -1,6 +1,7 @@
 from vroom.Game import Game
 from Scene1 import Scene1
 import pygame
+from vroom.InputManager import InputManager
 
 SCREEN_WIDTH = 500
 SCREEN_HEIGHT = 500
@@ -12,7 +13,7 @@ game = Game(SCREEN_WIDTH, SCREEN_HEIGHT, FRAME_RATE, TITLE, Scene1())
 while game.running:
     game.loop()
 
-    if game.inputManger.IsKeyDown(pygame.K_SPACE):
+    if InputManager.IsKeyDown(pygame.K_SPACE):
         game.SetScene(Scene1())
 
 game.quit()

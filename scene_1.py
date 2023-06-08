@@ -1,7 +1,7 @@
 from controller import Controller
 from vroom.game_object import GameObject
 from vroom.scene import Scene
-from vroom.component.sprite_renderer import SpriteRenderer
+from vroom.components.sprite_renderer import SpriteRenderer
 
 
 class Scene1(Scene):

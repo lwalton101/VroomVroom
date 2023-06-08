@@ -5,7 +5,7 @@ from vroom.Scene import Scene
 class Game:
 
     VERSION = 0.1
-    def __init__(self, screenWidth: int, screenHeight: int, frameRate: int, title:str, mainScene: Scene):
+    def __init__(self, screenWidth: int, screenHeight: int, frameRate: int, title:str, mainScene: Scene) -> None:
         """
         The __init__ function is called when the class is instantiated.
         It sets up all of the variables that are needed for the game to run, inits some pygame stuff and then calls Start() on mainScene.
@@ -56,6 +56,7 @@ class Game:
                 InputManager.handleKeyupEvent(event.key)
 
         self.currentScene.Render()
+        self.currentScene.Update()
         self.screen.fill((255,255,255))
         pygame.display.flip()
 

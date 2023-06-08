@@ -1,10 +1,10 @@
-from Component import Component
+from vroom.Component import Component
 
 class GameObject:
     name: str = ""
     components: list[Component] = []
 
-    def __init__(self, name):
+    def __init__(self, name: str):
         self.name = name
 
     def Update(self):
@@ -17,6 +17,8 @@ class GameObject:
         """
         for component in self.components:
             component.Update()
+
+        print(f"update from gameobject {self.name}")
 
     def GetComponent(self, componentType: type) -> Component | None:
         """

@@ -5,5 +5,8 @@ class Component:
     def Start(self):
         pass
 
+    def Render(self):
+        pass
+
     def Update(self):
         pass

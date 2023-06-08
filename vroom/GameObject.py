@@ -7,9 +7,21 @@ class GameObject:
     def __init__(self, name: str):
         self.name = name
 
+    def Render(self) -> None:
+        """
+        The Render function is a function that renders all of the components attatched to the game object.
+        It does this by iterating through each component and calling its Render() method.
+        
+        :param self: Represent the instance of the class
+        :return: Nothing
+        :doc-author: Trelent
+        """
+        for component in self.components:
+            component.Render()
+
     def Update(self):
         """
-        The Update function is called once per frame. It updates the state of all components in the entity.
+        The Update function is called once per frame. It updates the state of all components attatched to the game object.
         
         :param self: Represent the instance of the class
         :return: Nothing
@@ -17,8 +29,6 @@ class GameObject:
         """
         for component in self.components:
             component.Update()
-
-        print(f"update from gameobject {self.name}")
 
     def GetComponent(self, componentType: type) -> Component | None:
         """

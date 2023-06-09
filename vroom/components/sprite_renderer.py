@@ -35,4 +35,6 @@ class SpriteRenderer(Component):
 
     def Update(self) -> None:
         super().Update()
-        Debug.Push(f"{self.gameObject.name}: {self.gameObject.pos}")
+        Debug.Push(f"{self.gameObject.name} Pos: {self.gameObject.pos}")
+        Debug.Push(f"{self.gameObject.name} Scale: {self.gameObject.scale}")
+        Debug.Push(f"{self.gameObject.name} Rotation: {self.gameObject.rotation}")

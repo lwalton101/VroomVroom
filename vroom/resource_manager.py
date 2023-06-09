@@ -26,7 +26,7 @@ class ResourceManager:
                     if debug:
                         print(f"Registered {fileName} using {fileEndingFunctions[fileEnding]}")
                 else:
-                    print(f"Unrecognised file extension: {fileEnding}")
+                    print(f"RESOURCE ERROR: Unrecognised file extension: {fileEnding}")
 
 
     @staticmethod

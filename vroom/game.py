@@ -1,7 +1,10 @@
+import datetime
 import pygame
+from vroom.components.debug import Debug
 from vroom.input_manager import InputManager
 from vroom.scene import Scene
 from vroom.camera import Camera
+from vroom.time import Time
 
 
 class Game:
@@ -40,10 +43,13 @@ class Game:
 
         self.running = True
 
+        flags = pygame.DOUBLEBUF
+
         pygame.init()
-        self.screen = pygame.display.set_mode((screenWidth, screenHeight))
+        self.screen = pygame.display.set_mode((screenWidth, screenHeight), flags, 16)
         pygame.display.set_caption(title)
         self.clock = pygame.time.Clock()
+        pygame.event.set_allowed([pygame.QUIT, pygame.KEYDOWN, pygame.KEYUP])
 
         self.currentScene.Start()
 
@@ -57,7 +63,7 @@ class Game:
         :return: Nothing, but the function is called in a while loop
         :doc-author: Trelent
         """
-        self.clock.tick(self.frameRate)
+        Time.dt = self.clock.tick(self.frameRate) / 1000
         InputManager.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -66,12 +72,16 @@ class Game:
                 InputManager.handleKeydownEvent(event.key)
             if event.type == pygame.KEYUP:
                 InputManager.handleKeyupEvent(event.key)
-        # Debug.Push("Test")
+        
         self.currentScene.Update()
+
+        Debug.Push(f"FPS: {int(self.clock.get_fps())}/{self.frameRate}")
+        Debug.Push(f"Delta Time: {Time.dt}")
+        Debug.Push(f"Frame Time: {Time.dt * 1000}")
+
         self.currentScene.Render(self.screen)
 
         pygame.display.update()
-        pygame.display.flip()
 
     def quit(self) -> None:
         """

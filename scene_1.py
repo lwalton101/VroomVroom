@@ -1,5 +1,7 @@
 from controller import Controller
+from vroom.components.circle import Circle
 from vroom.components.debug import Debug
+from vroom.components.rectangle import Rectangle
 from vroom.game_object import GameObject
 from vroom.scene import Scene
 from vroom.components.sprite_renderer import SpriteRenderer
@@ -21,10 +23,14 @@ class Scene1(Scene):
         go.AddComponent(SpriteRenderer("bedrock.png"))
         go.AddComponent(Controller())
 
-        for x in range(100):
-            go: GameObject = self.CreateGameObject(str(x))
-            go.AddComponent(SpriteRenderer("bedrock.png"))
-            go.pos = (random.randint(-250,250), random.randint(-250,250))
+        go: GameObject = self.CreateGameObject(str("x"))
+        go.AddComponent(Circle(radius=random.randint(1,25), color=(random.randint(0,255),random.randint(0,255),random.randint(0,255))))
+        go.pos = (0, 0)
+
+        # for x in range(100):
+        #     go: GameObject = self.CreateGameObject(str(x))
+        #     go.AddComponent(Circle(radius=random.randint(1,25), color=(random.randint(0,255),random.randint(0,255),random.randint(0,255))))
+        #     go.pos = (random.randint(-250,250), random.randint(-250,250))
 
     def Update(self):
         super().Update()

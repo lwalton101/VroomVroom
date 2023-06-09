@@ -1,4 +1,5 @@
 import pygame
+from vroom.camera import Camera
 from vroom.game_object import GameObject
 from uuid import UUID
 
@@ -9,6 +10,7 @@ class Scene:
         self.gameObjects: dict[UUID, GameObject] = {}
 
     def Start(self):
+        Camera.offset = (0, 0)
         pass
 
     def Update(self):
@@ -52,6 +54,8 @@ class Scene:
         :doc-author: Trelent
         """
         self.gameObjects[gameobject.id] = gameobject
+        self.gameObjects[gameobject.id].Start()
+        print("game object started")
 
     def CreateGameObject(self, name: str, xPos: int = 0, yPos: int = 0) -> GameObject:
         """

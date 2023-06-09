@@ -11,6 +11,9 @@ class GameObject:
         self.rotation: float = 0
         self.scale: float = 1
 
+    def Start(self) -> None:
+        pass
+
     def Render(self, screen) -> None:
         """
         The Render function is a function that renders all of the components attatched to the game object.
@@ -63,6 +66,7 @@ class GameObject:
         if not self.HasComponent(type(component)):
             component.gameObject = self
             self.components.append(component)
+            component.Start()
         else:
             print(
                 f"Tried adding duplicate component {type(component)} on gameobject {self.name}"

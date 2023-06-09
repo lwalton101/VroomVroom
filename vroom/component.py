@@ -1,13 +1,12 @@
-import vroom.game_object
-
-
 class Component:
     def __init__(self):
+        import vroom.game_object
+
         self.gameObject: vroom.game_object.GameObject
         pass
 
     def Start(self):
-        pass
+        print("Comp starting")
 
     def Render(self, screen):
         """

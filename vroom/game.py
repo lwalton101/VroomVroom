@@ -66,8 +66,9 @@ class Game:
                 InputManager.handleKeydownEvent(event.key)
             if event.type == pygame.KEYUP:
                 InputManager.handleKeyupEvent(event.key)
-        self.currentScene.Render(self.screen)
+        # Debug.Push("Test")
         self.currentScene.Update()
+        self.currentScene.Render(self.screen)
 
         pygame.display.update()
         pygame.display.flip()

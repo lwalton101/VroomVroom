@@ -1,6 +1,7 @@
 import pygame
 from vroom.camera import Camera
 from vroom.component import Component
+from vroom.components.debug import Debug
 
 
 class SpriteRenderer(Component):
@@ -31,3 +32,7 @@ class SpriteRenderer(Component):
         rect = Camera.AdjustRectForOffset(rect)
 
         screen.blit(self.img, rect)
+
+    def Update(self) -> None:
+        super().Update()
+        Debug.Push(f"{self.gameObject.name}: {self.gameObject.pos}")

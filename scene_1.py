@@ -20,7 +20,7 @@ class Scene1(Scene):
         debugObject.AddComponent(Debug())
 
         go: GameObject = self.CreateGameObject("Bedrock Square")
-        go.AddComponent(SpriteRenderer("bedrock.png"))
+        go.AddComponent(SpriteRenderer("bedrock"))
         go.AddComponent(Controller())
 
         go: GameObject = self.CreateGameObject(str("x"))

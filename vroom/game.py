@@ -2,6 +2,7 @@ import datetime
 import pygame
 from vroom.components.debug import Debug
 from vroom.input_manager import InputManager
+from vroom.resource_manager import ResourceManager
 from vroom.scene import Scene
 from vroom.camera import Camera
 from vroom.time import Time
@@ -50,6 +51,8 @@ class Game:
         pygame.display.set_caption(title)
         self.clock = pygame.time.Clock()
         pygame.event.set_allowed([pygame.QUIT, pygame.KEYDOWN, pygame.KEYUP])
+
+        ResourceManager.autoRegister(debug = True)
 
         self.currentScene.Start()
 

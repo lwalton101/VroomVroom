@@ -2,16 +2,13 @@ import pygame
 from vroom.camera import Camera
 from vroom.component import Component
 from vroom.components.debug import Debug
+from vroom.resource_manager import ResourceManager
 
 
 class SpriteRenderer(Component):
-    def __init__(self, assetName: str, alpha: bool = False) -> None:
+    def __init__(self, assetName: str) -> None:
         super().__init__()
-        if alpha:
-            self.img: pygame.Surface = pygame.image.load(assetName).convert_alpha()
-        else:
-            self.img: pygame.Surface = pygame.image.load(assetName).convert()
-
+        self.img: pygame.Surface = ResourceManager.getSprite(assetName)
         self.spareImg: pygame.Surface = self.img
 
     def Render(self, screen: pygame.Surface) -> None:

@@ -6,7 +6,7 @@ class Component:
         pass
 
     def Start(self):
-        print("Comp starting")
+        pass
 
     def Render(self, screen):
         """

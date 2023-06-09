@@ -55,7 +55,6 @@ class Scene:
         """
         self.gameObjects[gameobject.id] = gameobject
         self.gameObjects[gameobject.id].Start()
-        print("game object started")
 
     def CreateGameObject(self, name: str, xPos: int = 0, yPos: int = 0) -> GameObject:
         """

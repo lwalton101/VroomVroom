@@ -16,7 +16,7 @@ class Scene1(Scene):
         debugObject: GameObject = self.CreateGameObject("Debug Manager")
         debugObject.AddComponent(Debug())
 
-        go: GameObject = self.CreateGameObject("rotate")
+        go: GameObject = self.CreateGameObject("Bedrock Square")
         go.AddComponent(SpriteRenderer("bedrock.png"))
         go.AddComponent(Controller())
 

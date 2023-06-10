@@ -26,8 +26,3 @@ class SpriteRenderer(Component):
 
     def Update(self) -> None:
         super().Update()
-        Debug.Push(f"Bedrock World Pos: {self.gameObject.pos}")
-        Debug.Push(
-            f"Bedrock Screen Pos: {Camera.WorldPosToScreenPos(self.gameObject.pos)}"
-        )
-        Debug.Push(f"Camera offset: {Camera.offset}")

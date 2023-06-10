@@ -18,7 +18,3 @@ class Circle(Component):
 
     def Update(self):
         super().Update()
-        Debug.Push(f"Circle World Pos: {self.gameObject.pos}")
-        Debug.Push(
-            f"Circle Screen Pos: {Camera.WorldPosToScreenPos(self.gameObject.pos)}"
-        )

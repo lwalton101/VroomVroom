@@ -1,3 +1,4 @@
+from vroom.AudioManager import AudioManager
 from vroom.camera import Camera
 from vroom.game import Game
 from scene_1 import Scene1
@@ -6,8 +7,8 @@ from vroom.input_manager import InputManager
 
 root = tkinter.Tk()
 
-SCREEN_WIDTH = root.winfo_screenwidth()
-SCREEN_HEIGHT = root.winfo_screenheight()
+SCREEN_WIDTH = 750
+SCREEN_HEIGHT = 750
 FRAME_RATE = 60
 TITLE = "Bananas Beans"
 

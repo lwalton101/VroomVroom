@@ -18,3 +18,15 @@ class Camera:
             screenPos[1] + round(Camera.offset[1]),
         )
         return screenPos
+
+    @staticmethod
+    def ScreenPosToWorldPos(screenPos: tuple[int, int]) -> tuple[float, float]:
+        worldPos: tuple[float, float] = (
+            round(screenPos[0]) - Camera.screenWidth // 2,
+            round(screenPos[1] * -1) - Camera.screenHeight // 2,
+        )
+        worldPos = (
+            worldPos[0] + round(Camera.offset[0]),
+            worldPos[1] - round(Camera.offset[1]),
+        )
+        return worldPos

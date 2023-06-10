@@ -35,6 +35,6 @@ class Controller(Component):
             )
 
         if InputManager.IsKeyDown(pygame.K_o):
-            AudioManager.PlaySound("test", "vine_om")
+            AudioManager.PlaySound("test", "vine_boom")
 
         Camera.offset = self.gameObject.pos

@@ -52,7 +52,7 @@ class Game:
         self.clock = pygame.time.Clock()
         pygame.event.set_allowed([pygame.QUIT, pygame.KEYDOWN, pygame.KEYUP])
 
-        ResourceManager.autoRegister(debug = True)
+        ResourceManager.autoRegister(debug=True)
 
         self.currentScene.Start()
 
@@ -75,7 +75,7 @@ class Game:
                 InputManager.handleKeydownEvent(event.key)
             if event.type == pygame.KEYUP:
                 InputManager.handleKeyupEvent(event.key)
-        
+
         self.currentScene.Update()
 
         Debug.Push(f"FPS: {int(self.clock.get_fps())}/{self.frameRate}")

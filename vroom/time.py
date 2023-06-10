@@ -1,3 +1,3 @@
-class Time():
-    #delta time in milliseconds
+class Time:
+    # delta time in milliseconds
     dt: int = 0

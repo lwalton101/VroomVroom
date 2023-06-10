@@ -34,12 +34,7 @@ class Scene1(Scene):
                 ),
             )
         )
-        go.pos = (20, 0)
-
-        # for x in range(100):
-        #     go: GameObject = self.CreateGameObject(str(x))
-        #     go.AddComponent(Circle(radius=random.randint(1,25), color=(random.randint(0,255),random.randint(0,255),random.randint(0,255))))
-        #     go.pos = (random.randint(-250,250), random.randint(-250,250))
+        go.pos = (0, 0)
 
     def Update(self):
         super().Update()

@@ -24,8 +24,17 @@ class Scene1(Scene):
         go.AddComponent(Controller())
 
         go: GameObject = self.CreateGameObject(str("x"))
-        go.AddComponent(Circle(radius=random.randint(1,25), color=(random.randint(0,255),random.randint(0,255),random.randint(0,255))))
-        go.pos = (0, 0)
+        go.AddComponent(
+            Circle(
+                radius=random.randint(1, 25),
+                color=(
+                    random.randint(0, 255),
+                    random.randint(0, 255),
+                    random.randint(0, 255),
+                ),
+            )
+        )
+        go.pos = (20, 0)
 
         # for x in range(100):
         #     go: GameObject = self.CreateGameObject(str(x))

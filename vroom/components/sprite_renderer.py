@@ -21,9 +21,13 @@ class SpriteRenderer(Component):
             )
 
         rect: pygame.Rect = self.img.get_rect()
-        rect.center = self.gameObject.pos
-        rect = Camera.AdjustRectForOffset(rect)
+        rect.center = Camera.WorldPosToScreenPos(self.gameObject.pos)
         screen.blit(self.img, rect)
 
     def Update(self) -> None:
         super().Update()
+        Debug.Push(f"Bedrock World Pos: {self.gameObject.pos}")
+        Debug.Push(
+            f"Bedrock Screen Pos: {Camera.WorldPosToScreenPos(self.gameObject.pos)}"
+        )
+        Debug.Push(f"Camera offset: {Camera.offset}")

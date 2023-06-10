@@ -44,13 +44,17 @@ class Game:
 
         self.running = True
 
-        flags = pygame.DOUBLEBUF
+        self.flags = pygame.DOUBLEBUF | pygame.FULLSCREEN | pygame.SCALED
 
         pygame.init()
-        self.screen = pygame.display.set_mode((screenWidth, screenHeight), flags, 16)
+        self.screen = pygame.display.set_mode(
+            (screenWidth, screenHeight), self.flags, 16
+        )
         pygame.display.set_caption(title)
         self.clock = pygame.time.Clock()
-        pygame.event.set_allowed([pygame.QUIT, pygame.KEYDOWN, pygame.KEYUP])
+        pygame.event.set_allowed(
+            [pygame.QUIT, pygame.KEYDOWN, pygame.KEYUP, pygame.VIDEORESIZE]
+        )
 
         ResourceManager.autoRegister(debug=True)
 
@@ -66,7 +70,8 @@ class Game:
         :return: Nothing, but the function is called in a while loop
         :doc-author: Trelent
         """
-        Time.dt = self.clock.tick(self.frameRate) / 1000
+        # again vscode is shitting itself
+        Time.dt = self.clock.tick(self.frameRate)
         InputManager.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -75,12 +80,16 @@ class Game:
                 InputManager.handleKeydownEvent(event.key)
             if event.type == pygame.KEYUP:
                 InputManager.handleKeyupEvent(event.key)
+            if event.type == pygame.VIDEORESIZE:
+                self.screen = pygame.display.set_mode(
+                    (event.w, event.h), self.flags, 16
+                )
 
         self.currentScene.Update()
 
         Debug.Push(f"FPS: {int(self.clock.get_fps())}/{self.frameRate}")
         Debug.Push(f"Delta Time: {Time.dt}")
-        Debug.Push(f"Frame Time: {Time.dt * 1000}")
+        Debug.Push(f"Frame Time: {Time.dt}")
 
         self.currentScene.Render(self.screen)
 

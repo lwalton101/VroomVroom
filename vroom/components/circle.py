@@ -1,6 +1,7 @@
 import pygame
 from vroom.camera import Camera
 from vroom.component import Component
+from vroom.components.debug import Debug
 
 
 class Circle(Component):
@@ -12,6 +13,12 @@ class Circle(Component):
     def Render(self, screen):
         super().Render(screen)
         rect: pygame.Rect = pygame.Rect(0, 0, self.radius, self.radius)
-        rect.center = self.gameObject.pos
-        rect = Camera.AdjustRectForOffset(rect)
+        rect.center = Camera.WorldPosToScreenPos(self.gameObject.pos)
         pygame.draw.circle(screen, self.color, rect.center, self.radius)
+
+    def Update(self):
+        super().Update()
+        Debug.Push(f"Circle World Pos: {self.gameObject.pos}")
+        Debug.Push(
+            f"Circle Screen Pos: {Camera.WorldPosToScreenPos(self.gameObject.pos)}"
+        )

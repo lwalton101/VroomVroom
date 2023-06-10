@@ -7,7 +7,7 @@ class GameObject:
         self.name: str = name
         self.components: list[Component] = []
         self.id = uuid.uuid4()
-        self.pos: tuple[int, int] = 0, 0
+        self.pos: tuple[float, float] = 0, 0
         self.rotation: float = 0
         self.scale: float = 1
 

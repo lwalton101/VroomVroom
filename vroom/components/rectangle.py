@@ -18,6 +18,5 @@ class Rectangle(Component):
     def Render(self, screen):
         super().Render(screen)
         rect: pygame.Rect = pygame.Rect(0, 0, self.width, self.height)
-        rect.center = self.gameObject.pos
-        rect = Camera.AdjustRectForOffset(rect)
+        rect.center = Camera.WorldPosToScreenPos(self.gameObject.pos)
         pygame.draw.rect(screen, self.color, rect)

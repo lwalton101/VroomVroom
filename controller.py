@@ -1,4 +1,5 @@
 import pygame
+from vroom.AudioManager import AudioManager
 from vroom.camera import Camera
 from vroom.component import Component
 from vroom.input_manager import InputManager
@@ -32,5 +33,8 @@ class Controller(Component):
                 self.gameObject.pos[0] + (self.speed * Time.dt),
                 self.gameObject.pos[1],
             )
+
+        if InputManager.IsKeyDown(pygame.K_o):
+            AudioManager.PlaySound("test", "vine_om")
 
         Camera.offset = self.gameObject.pos

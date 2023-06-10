@@ -1,5 +1,6 @@
 import datetime
 import pygame
+from vroom.AudioManager import AudioManager
 from vroom.components.debug import Debug
 from vroom.input_manager import InputManager
 from vroom.resource_manager import ResourceManager
@@ -44,7 +45,7 @@ class Game:
 
         self.running = True
 
-        self.flags = pygame.DOUBLEBUF | pygame.FULLSCREEN | pygame.SCALED
+        self.flags = pygame.DOUBLEBUF | pygame.SCALED
 
         pygame.init()
         self.screen = pygame.display.set_mode(
@@ -57,6 +58,7 @@ class Game:
         )
 
         ResourceManager.autoRegister(debug=True)
+        AudioManager.Init()
 
         self.currentScene.Start()
 

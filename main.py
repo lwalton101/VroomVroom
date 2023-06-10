@@ -1,5 +1,4 @@
 from vroom.AudioManager import AudioManager
-from vroom.camera import Camera
 from vroom.game import Game
 from scene_1 import Scene1
 import pygame, tkinter
@@ -14,6 +13,8 @@ TITLE = "Bananas Beans"
 
 
 game = Game(SCREEN_WIDTH, SCREEN_HEIGHT, FRAME_RATE, TITLE, Scene1())
+
+AudioManager.AddCategory("test", 5)
 
 while game.running:
     game.loop()

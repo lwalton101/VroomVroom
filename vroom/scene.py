@@ -1,5 +1,6 @@
 import pygame
 from vroom.camera import Camera
+from vroom.components.debug import Debug
 from vroom.game_object import GameObject
 from uuid import UUID
 
@@ -40,8 +41,14 @@ class Scene:
         :doc-author: Trelent
         """
         screen.fill(self.color)
-        for uuid in self.gameObjects:
-            self.gameObjects[uuid].Render(screen)
+
+        goByZIndex = sorted(
+            self.gameObjects.values(),
+            key=lambda gameobject: gameobject.z_index,
+        )
+
+        for go in goByZIndex:
+            go.Render(screen)
 
     def AddGameObject(self, gameobject: GameObject) -> None:
         """

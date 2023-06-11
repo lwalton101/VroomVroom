@@ -10,6 +10,7 @@ class GameObject:
         self.pos: tuple[float, float] = 0, 0
         self.rotation: float = 0
         self.scale: float = 1
+        self.z_index = 0
 
     def Start(self) -> None:
         pass

@@ -10,25 +10,25 @@ import random
 
 
 class Scene1(Scene):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__((255, 0, 0))
 
-    def Start(self):
+    def Start(self) -> None:
         super().Start()
         print("Starting Scene 1")
 
         debugObject: GameObject = self.CreateGameObject("Debug Manager")
         debugObject.AddComponent(Debug())
 
-        go: GameObject = self.CreateGameObject("Bedrock Square")
-        go.AddComponent(SpriteRenderer("bedrock"))
-        go.AddComponent(Controller())
-        go.z_index = 5
+        bedrockObject: GameObject = self.CreateGameObject("Bedrock Square")
+        bedrockObject.AddComponent(SpriteRenderer("bedrock"))
+        bedrockObject.AddComponent(Controller())
+        bedrockObject.z_index = 1
 
-        go: GameObject = self.CreateGameObject(str("x"))
-        go.AddComponent(
+        circleObject: GameObject = self.CreateGameObject("Circle")
+        circleObject.AddComponent(
             Circle(
-                radius=random.randint(1, 25),
+                radius=random.randint(25, 50),
                 color=(
                     random.randint(0, 255),
                     random.randint(0, 255),
@@ -36,18 +36,19 @@ class Scene1(Scene):
                 ),
             )
         )
-        go.pos = (0, 0)
+        circleObject.pos = (0, 0)
+        circleObject.z_index = 2
 
         lineObject: GameObject = self.CreateGameObject("Line")
         lineObject.AddComponent(Line((-100, 0), (100, 0), (0, 255, 0)))
         lineObject.pos = 100, 50
 
-        lineObject: GameObject = self.CreateGameObject("Line2")
-        lineObject.AddComponent(Line((-100, 0), (100, 0), (0, 255, 0)))
-        lineObject.pos = 0, 0
-        lineObject.enabled = False
+        disabledLineObject: GameObject = self.CreateGameObject("Disabled Line")
+        disabledLineObject.AddComponent(Line((-100, 0), (100, 0), (0, 255, 0)))
+        disabledLineObject.pos = 0, 0
+        disabledLineObject.enabled = False
 
-    def Update(self):
+    def Update(self) -> None:
         super().Update()
 
     def Exit(self):

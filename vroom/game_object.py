@@ -39,6 +39,14 @@ class GameObject:
         for component in self.components:
             component.Update()
 
+    def OnEnable(self):
+        for component in self.components:
+            component.OnEnable()
+
+    def OnDisable(self):
+        for component in self.components:
+            component.OnDisable()
+
     def GetComponent(self, componentType: type) -> Component | None:
         """
         The GetComponent function returns the first component of a given type that it finds.

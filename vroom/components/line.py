@@ -41,3 +41,7 @@ class Line(Component):
             screenEndPos,
             self.width,
         )
+
+    def OnEnable(self):
+        super().OnEnable()
+        print("Enabled crimes")

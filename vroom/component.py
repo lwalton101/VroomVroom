@@ -24,3 +24,9 @@ class Component:
 
     def Update(self):
         pass
+
+    def OnEnable(self):
+        pass
+
+    def OnDisable(self):
+        pass

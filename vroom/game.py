@@ -12,6 +12,7 @@ from vroom.time import Time
 
 class Game:
     VERSION = 0.1
+    currentScene: Scene
 
     def __init__(
         self,
@@ -39,7 +40,7 @@ class Game:
         self.screenHeight = screenHeight
         self.frameRate = frameRate
         self.title = title
-        self.currentScene = mainScene
+        Game.currentScene = mainScene
 
         Camera.screenWidth = screenWidth
         Camera.screenHeight = screenHeight
@@ -61,7 +62,7 @@ class Game:
         ResourceManager.autoRegister(debug=True)
         AudioManager.Init()
 
-        self.currentScene.Start()
+        Game.currentScene.Start()
 
     def loop(self) -> None:
         """
@@ -87,14 +88,14 @@ class Game:
                     (event.w, event.h), self.flags, 16
                 )
 
-        self.currentScene.Update()
+        Game.currentScene.Update()
         memUsage = self.process.memory_info().rss / 1024 / 1024
         Debug.Push(f"FPS: {int(self.clock.get_fps())} / {self.frameRate}")
         Debug.Push(f"Delta Time: {Time.dt} seconds")
         Debug.Push(f"Frame Time: {Time.dt * 1000} ms")
         Debug.Push(f"Memory Usage: {memUsage} MB")
 
-        self.currentScene.Render(self.screen)
+        Game.currentScene.Render(self.screen)
 
         pygame.display.update()
 
@@ -120,6 +121,6 @@ class Game:
         :return: None
         :doc-author: Trelent
         """
-        self.currentScene.Exit()
-        self.currentScene = scene
-        self.currentScene.Start()
+        Game.currentScene.Exit()
+        Game.currentScene = scene
+        Game.currentScene.Start()

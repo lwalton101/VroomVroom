@@ -1,6 +1,7 @@
 from controller import Controller
 from vroom.components.circle import Circle
 from vroom.components.debug import Debug
+from vroom.components.line import Line
 from vroom.components.rectangle import Rectangle
 from vroom.game_object import GameObject
 from vroom.scene import Scene
@@ -22,6 +23,7 @@ class Scene1(Scene):
         go: GameObject = self.CreateGameObject("Bedrock Square")
         go.AddComponent(SpriteRenderer("bedrock"))
         go.AddComponent(Controller())
+        go.z_index = 5
 
         go: GameObject = self.CreateGameObject(str("x"))
         go.AddComponent(
@@ -35,6 +37,14 @@ class Scene1(Scene):
             )
         )
         go.pos = (0, 0)
+
+        lineObject: GameObject = self.CreateGameObject("Line")
+        lineObject.AddComponent(Line((-100, 0), (100, 0), (0, 255, 0)))
+        lineObject.pos = 100, 50
+
+        lineObject: GameObject = self.CreateGameObject("Line2")
+        lineObject.AddComponent(Line((-100, 0), (100, 0), (0, 255, 0)))
+        lineObject.pos = 0, 0
 
     def Update(self):
         super().Update()

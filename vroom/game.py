@@ -1,4 +1,5 @@
-import datetime
+import os
+import psutil
 import pygame
 from vroom.AudioManager import AudioManager
 from vroom.components.debug import Debug
@@ -44,7 +45,7 @@ class Game:
         Camera.screenHeight = screenHeight
 
         self.running = True
-
+        self.process = psutil.Process(os.getpid())
         self.flags = pygame.DOUBLEBUF | pygame.SCALED
 
         pygame.init()
@@ -72,8 +73,7 @@ class Game:
         :return: Nothing, but the function is called in a while loop
         :doc-author: Trelent
         """
-        # again vscode is shitting itself
-        Time.dt = self.clock.tick(self.frameRate)
+        Time.dt = self.clock.tick(self.frameRate) / 1000
         InputManager.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -88,10 +88,11 @@ class Game:
                 )
 
         self.currentScene.Update()
-
-        Debug.Push(f"FPS: {int(self.clock.get_fps())}/{self.frameRate}")
-        Debug.Push(f"Delta Time: {Time.dt}")
-        Debug.Push(f"Frame Time: {Time.dt}")
+        memUsage = self.process.memory_info().rss / 1024 / 1024
+        Debug.Push(f"FPS: {int(self.clock.get_fps())} / {self.frameRate}")
+        Debug.Push(f"Delta Time: {Time.dt} seconds")
+        Debug.Push(f"Frame Time: {Time.dt * 1000} ms")
+        Debug.Push(f"Memory Usage: {memUsage} MB")
 
         self.currentScene.Render(self.screen)
 

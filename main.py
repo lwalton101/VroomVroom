@@ -1,3 +1,4 @@
+import os
 from vroom.AudioManager import AudioManager
 from vroom.game import Game
 from scene_1 import Scene1

@@ -9,7 +9,7 @@ from vroom.time import Time
 class Controller(Component):
     def Start(self):
         super().Start()
-        self.speed: float = 0.5
+        self.speed: float = 500
 
     def Update(self) -> None:
         super().Update()

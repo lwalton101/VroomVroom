@@ -23,8 +23,9 @@ class Scene:
         :return: Nothing
         :doc-author: Trelent
         """
-        for uuid in self.gameObjects:
-            self.gameObjects[uuid].Update()
+        for go in self.gameObjects.values():
+            if go.enabled:
+                go.Update()
 
     def Exit(self):
         pass
@@ -48,7 +49,8 @@ class Scene:
         )
 
         for go in goByZIndex:
-            go.Render(screen)
+            if go.enabled:
+                go.Render(screen)
 
     def AddGameObject(self, gameobject: GameObject) -> None:
         """

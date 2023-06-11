@@ -45,6 +45,7 @@ class Scene1(Scene):
         lineObject: GameObject = self.CreateGameObject("Line2")
         lineObject.AddComponent(Line((-100, 0), (100, 0), (0, 255, 0)))
         lineObject.pos = 0, 0
+        lineObject.enabled = False
 
     def Update(self):
         super().Update()

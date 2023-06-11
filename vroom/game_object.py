@@ -11,6 +11,7 @@ class GameObject:
         self.rotation: float = 0
         self.scale: float = 1
         self.z_index = 0
+        self.enabled: bool = True
 
     def Start(self) -> None:
         pass
@@ -111,3 +112,6 @@ class GameObject:
             print(
                 f"Tried removing nonexistant component {componentType} on gameobject {self.name}"
             )
+
+    def SetEnabled(self, state: bool) -> None:
+        self.enabled = state

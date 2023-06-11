@@ -15,7 +15,7 @@ TITLE = "Bananas Beans"
 
 game = Game(SCREEN_WIDTH, SCREEN_HEIGHT, FRAME_RATE, TITLE, Scene1())
 
-AudioManager.AddCategory("test", 5)
+AudioManager.AddCategory("test", 50)
 
 while game.running:
     game.loop()

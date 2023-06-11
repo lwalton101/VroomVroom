@@ -26,14 +26,16 @@ class Line(Component):
             self.startPoint[0] + self.gameObject.pos[0],
             self.startPoint[1] + self.gameObject.pos[1],
         )
-        screenStartPos = Camera.WorldPosToScreenPos(screenStartPos)
 
         screenEndPos = (
             self.endPoint[0] + self.gameObject.pos[0],
             self.endPoint[1] + self.gameObject.pos[1],
         )
 
-        screenEndPos = Camera.WorldPosToScreenPos(screenEndPos)
+        if not self.gameObject.static:
+            screenStartPos = Camera.WorldPosToScreenPos(screenStartPos)
+            screenEndPos = Camera.WorldPosToScreenPos(screenEndPos)
+
         pygame.draw.line(
             screen,
             self.color,

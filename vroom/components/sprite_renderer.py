@@ -1,7 +1,7 @@
 import pygame
+from util.MathUtil import MathUtil
 from vroom.camera import Camera
 from vroom.component import Component
-from vroom.components.debug import Debug
 from vroom.resource_manager import ResourceManager
 
 
@@ -21,7 +21,10 @@ class SpriteRenderer(Component):
             )
 
         rect: pygame.Rect = self.img.get_rect()
-        rect.center = Camera.WorldPosToScreenPos(self.gameObject.pos)
+        if self.gameObject.static:
+            rect.center = MathUtil.RoundFloatPosToIntPos(self.gameObject.pos)
+        else:
+            rect.center = Camera.WorldPosToScreenPos(self.gameObject.pos)
         screen.blit(self.img, rect)
 
     def Update(self) -> None:

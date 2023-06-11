@@ -3,15 +3,25 @@ import uuid, pygame
 
 
 class GameObject:
-    def __init__(self, name: str, xPos: float = 0, yPos: float = 0):
+    def __init__(
+        self,
+        name: str,
+        xPos: float = 0,
+        yPos: float = 0,
+        rotation: float = 0,
+        scale: float = 1,
+        z_index: int = 0,
+        static: bool = False,
+    ):
         self.name: str = name
         self.components: list[Component] = []
         self.id = uuid.uuid4()
-        self.pos: tuple[float, float] = 0, 0
+        self.pos: tuple[float, float] = xPos, yPos
         self.rotation: float = 0
         self.scale: float = 1
-        self.z_index = 0
+        self.z_index: int = 0
         self.enabled: bool = True
+        self.static: bool = False
 
     def Start(self) -> None:
         pass

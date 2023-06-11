@@ -19,6 +19,7 @@ class Scene1(Scene):
 
         debugObject: GameObject = self.CreateGameObject("Debug Manager")
         debugObject.AddComponent(Debug())
+        debugObject.z_index = 999999999999
 
         bedrockObject: GameObject = self.CreateGameObject("Bedrock Square")
         bedrockObject.AddComponent(SpriteRenderer("bedrock"))
@@ -36,12 +37,13 @@ class Scene1(Scene):
                 ),
             )
         )
-        circleObject.pos = (0, 0)
+        circleObject.pos = (50, 50)
         circleObject.z_index = 2
 
         lineObject: GameObject = self.CreateGameObject("Line")
         lineObject.AddComponent(Line((-100, 0), (100, 0), (0, 255, 0)))
         lineObject.pos = 100, 50
+        lineObject.static = True
 
         disabledLineObject: GameObject = self.CreateGameObject("Disabled Line")
         disabledLineObject.AddComponent(Line((-100, 0), (100, 0), (0, 255, 0)))

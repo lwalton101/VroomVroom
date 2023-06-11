@@ -1,4 +1,5 @@
 import pygame
+from util.MathUtil import MathUtil
 from vroom.camera import Camera
 from vroom.component import Component
 
@@ -35,6 +36,9 @@ class Line(Component):
         if not self.gameObject.static:
             screenStartPos = Camera.WorldPosToScreenPos(screenStartPos)
             screenEndPos = Camera.WorldPosToScreenPos(screenEndPos)
+        else:
+            screenStartPos = MathUtil.RoundFloatPosToIntPos(screenStartPos)
+            screenEndPos = MathUtil.RoundFloatPosToIntPos(screenEndPos)
 
         pygame.draw.line(
             screen,
